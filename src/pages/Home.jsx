@@ -16,11 +16,12 @@ function Home() {
       <div className="text-center text-4xl font-bold m-8">
         <h1>Generation Thailand</h1>
         <h1>
-        {sector === "" ? "React - Assignment" : (
+        {sector === "" ? "React - Assignment" :
             `Home - ${sector} Sector`
-          )}
+        }
         </h1>
       </div>
+
       {/* สร้างปุ่มเพื่อเลือก sector */}
       <div className="flex p-4 gap-4 justify-center m-8">
         <button

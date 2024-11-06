@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import FormInputData from '../components/FormInputData';
 
 function Admin() {
   const [employees, setEmployees] = useState([])
   const [reload, setReload] = useState(false)
-  const [name, setName] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [position, setPosition] = useState("");
 
   const url = "https://jsd5-mock-backend.onrender.com";
 
@@ -19,14 +17,6 @@ function Admin() {
     getData()
   }, [reload])
 
-  const deleteData = async (id) => {
-    const response = await axios.delete(`${url}/member/${id}`);
-
-    if (response.status === 200) {
-      setReload(!reload);
-      console.log("Deleted successfully", response);
-    }
-  }
 
   const createData = async (name, lastname, position) => {
     const requestData = {
@@ -42,48 +32,24 @@ function Admin() {
     }
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    createData(name, lastname, position);
 
-    setName("");
-    setLastname("");
-    setPosition("");
+  /* ลบข้อมูล จาก api */
+  const deleteData = async (id) => {
+    const response = await axios.delete(`${url}/member/${id}`);
+
+    /* เช็ค status ถ้า api มัน response ให้เป็น state variable ที่ชื่อ reload เป็น true เพื่อให้ useEffect ทำการ getData ใหม่ ที่เราทำการลบข้อมูลไปแล้ว */
+    if (response.status === 200) {
+      setReload(!reload);
+      console.log("Deleted successfully", response);
+    }
   }
+
 
   return (
     <div className="flex flex-col items-center">
-      <form className="flex flex-col w-full p-4 gap-4 justify-center">
-        <h1 className="text-2xl font-bold">Create user here</h1>
-        <input
-          className="border border-slate-900 rounded-sm p-2"
-          type="text"
-          value={name}
-          onChange={e => setName(e.target.value)}
-          placeholder="Enter name"
-        />
-        <input
-          className="border border-slate-900 rounded-sm p-2"
-          type="text"
-          value={lastname}
-          onChange={e => setLastname(e.target.value)}
-          placeholder="Enter last name"
-        />
-        <input
-          className="border border-slate-900 rounded-sm p-2"
-          type="text"
-          value={position}
-          onChange={e => setPosition(e.target.value)}
-          placeholder="Enter position"
-        />
-        <button
-          className="p-2 bg-blue-500 rounded-md text-white"
-          type="submit"
-          onClick={handleSubmit}
-        >
-          Add
-        </button>
-      </form>
+      <FormInputData
+        createData={createData}
+      />
       <table className="w-full text-center">
         <thead className="bg-slate-300">
           <tr>
