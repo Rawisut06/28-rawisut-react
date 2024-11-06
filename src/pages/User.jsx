@@ -1,8 +1,8 @@
 function User({employees}) {
 
   return (
-    <div>
-      <table className="w-full text-center">
+    <div className="flex flex-col items-center">
+      <table className="w-[1000px] max-md:w-full text-center">
         <thead className="bg-slate-300">
           <tr>
             <th className="border-2">Name</th>
