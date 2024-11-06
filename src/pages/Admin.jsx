@@ -52,7 +52,7 @@ function Admin() {
       <FormInputData
         createData={createData}
       />
-      <table className="w-full text-center">
+      <table className="w-[1000px] text-center max-md:w-full">
         <thead className="bg-slate-300">
           <tr>
             <th className="border-2 w-[25%]">Name</th>
@@ -68,7 +68,7 @@ function Admin() {
                 <td className="border-2">{employee.name}</td>
                 <td className="border-2">{employee.lastname}</td>
                 <td className="border-2">{employee.position}</td>
-                <td className="flex justify-center gap-2 w-fit">
+                <td className="flex justify-center gap-2 border-2">
                   <button
                     className="text-red-500"
                     onClick={() => deleteData(employee.id)}
