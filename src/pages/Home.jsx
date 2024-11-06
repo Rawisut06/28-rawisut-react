@@ -5,6 +5,7 @@ import User from "./User"
 function Home() {
   const [sector, setSector] = useState("")
 
+  /* ฟังก์ชั่นแสดง component ตาม sector ที่เลือก */
   const sectorComponent = () => {
     if (sector === "Admin") return <Admin />;
     if (sector === "User") return <User />
@@ -20,6 +21,7 @@ function Home() {
           )}
         </h1>
       </div>
+      {/* สร้างปุ่มเพื่อเลือก sector */}
       <div className="flex p-4 gap-4 justify-center m-8">
         <button
           className={`p-4 rounded-xl hover:bg-slate-900 hover:text-white ${sector === "User" ? "bg-slate-900 text-white" : "bg-slate-300"}`}
@@ -35,6 +37,7 @@ function Home() {
         </button>
       </div>
 
+        {/* แสดง component ตาม sector ที่เลือก */}
         {sectorComponent()}
 
     </div>
