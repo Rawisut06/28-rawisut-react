@@ -18,7 +18,7 @@ function Home() {
 
   /* ฟังก์ชั่นแสดง component ตาม sector ที่เลือก */
   const sectorComponent = () => {
-    if (sector === "Admin") return <Admin employees={employees} />;
+    if (sector === "Admin") return <Admin />;
     if (sector === "User") return <User employees={employees} />;
   }
 
