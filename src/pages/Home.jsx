@@ -1,14 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Admin from "./Admin";
-import User from "./User"
+import User from "./User";
+import axios from "axios";
 
 function Home() {
   const [sector, setSector] = useState("")
+  const [employees, setEmployees] = useState([])
+
+  /* ดึงข้อมูล จาก api และนำมาเก็บใน state variable ที่ชื่อ employees*/
+  useEffect(() => {
+    const getData = async () => {
+      const response = await axios.get("https://jsd5-mock-backend.onrender.com/members");
+      setEmployees(response.data);
+    }
+    getData()
+  })
 
   /* ฟังก์ชั่นแสดง component ตาม sector ที่เลือก */
   const sectorComponent = () => {
-    if (sector === "Admin") return <Admin />;
-    if (sector === "User") return <User />
+    if (sector === "Admin") return <Admin employees={employees} />;
+    if (sector === "User") return <User employees={employees} />;
   }
 
   return (

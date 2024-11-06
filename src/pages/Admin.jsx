@@ -3,12 +3,12 @@ import axios from 'axios';
 import FormInputData from '../components/FormInputData';
 
 function Admin() {
-  const [employees, setEmployees] = useState([])
-  const [reload, setReload] = useState(false)
+  const [employees, setEmployees] = useState([]);
+  const [reload, setReload] = useState(false);
 
   const url = "https://jsd5-mock-backend.onrender.com";
 
-  /* ดึงข้อมูล จาก api และนำมาเก็บใน state variable ที่ชื่อ employees*/
+  /* ดึงข้อมูล จาก api และนำมาเก็บใน state variable ที่ชื่อ employees และจะทำการ update ตารางใหม่ เมื่อ ค่า reload เปลี่ยน*/
   useEffect(() => {
     const getData = async () => {
       const response = await axios.get(`${url}/members`);
@@ -17,15 +17,17 @@ function Admin() {
     getData()
   }, [reload])
 
-
+  /* สร้างข้อมูลขึ้นมาจาก props */
   const createData = async (name, lastname, position) => {
     const requestData = {
       name,
       lastname,
       position,
     }
+    /* นำข้อมูลที่สร้างมา updated เข้าไป data api */
     const response = await axios.post(`${url}/members`, requestData);
 
+    /* เช็ค status ถ้า api มัน response ให้เป็น state variable ที่ชื่อ reload เป็น true เพื่อให้ useEffect ทำการ getData ใหม่ ที่เราทำการสร้างข้อมูลไปแล้ว */
     if (response.status === 200) {
       setReload(!reload);
       console.log("Created successfully", response);
@@ -53,7 +55,7 @@ function Admin() {
       <table className="w-full text-center">
         <thead className="bg-slate-300">
           <tr>
-            <th className="border-2">Name</th>
+            <th className="border-2 w-[25%]">Name</th>
             <th className="border-2">Last Name</th>
             <th className="border-2">Position</th>
             <th className="border-2">Action</th>
@@ -66,8 +68,13 @@ function Admin() {
                 <td className="border-2">{employee.name}</td>
                 <td className="border-2">{employee.lastname}</td>
                 <td className="border-2">{employee.position}</td>
-                <td>
-                  <button onClick={() => deleteData(employee.id)}>Delete</button>
+                <td className="flex justify-center gap-2 w-fit">
+                  <button
+                    className="text-red-500"
+                    onClick={() => deleteData(employee.id)}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             )

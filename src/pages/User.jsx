@@ -1,16 +1,5 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+function User({employees}) {
 
-function User() {
-  const [employees, setEmployees] = useState([])
-
-  useEffect(() => {
-    const getData = async () => {
-      const response = await axios.get("https://jsd5-mock-backend.onrender.com/members");
-      setEmployees(response.data);
-    }
-    getData()
-  }, [])
   return (
     <div>
       <table className="w-full text-center">

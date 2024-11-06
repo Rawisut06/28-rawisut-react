@@ -5,10 +5,12 @@ function FormInputData({createData}) {
   const [lastname, setLastname] = useState("");
   const [position, setPosition] = useState("");
 
+  /* สร้างฟังก๋ชั่น เมื่อกดปุ่ม Add ให้ทำข้อมูลจาก input ให้เป็น props ใน createdData เพื่อนำ createdData ไปยัง Admin component */
   const handleSubmit = (e) => {
     e.preventDefault();
     createData(name, lastname, position);
 
+    /* เมื่อ input ค่าแล้ว ให้ทำการเปลี่ยน ค่า value input เป็น "" */
     setName("");
     setLastname("");
     setPosition("");
@@ -17,7 +19,7 @@ function FormInputData({createData}) {
   return (
     <div>
       <h1 className="text-2xl font-bold">Create user here</h1>
-      <form className="flex w-full py-4 gap-4 justify-center">
+      <form className="flex w-full py-4 gap-4 justify-center max-md:flex-col">
         <input
           className="border border-slate-900 rounded-sm p-2"
           type="text"
