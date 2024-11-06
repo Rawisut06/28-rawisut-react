@@ -44,6 +44,9 @@ function Home() {
           Admin Home Sector
         </button>
       </div>
+
+        {sectorComponent()}
+
     </div>
   )
 }
