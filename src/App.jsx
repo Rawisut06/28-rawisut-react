@@ -6,6 +6,7 @@ import Owner from './pages/Owner';
 function App() {
   return (
     <>
+      {/* สร้าง path Home และ Owner Component */}
       <BrowserRouter>
         <Navbar />
         <Routes>

@@ -4,7 +4,10 @@ import User from "./User";
 import axios from "axios";
 
 function Home() {
+  /* สร้าง state variable ชื่อ sector เพื่อเช็คว่าเป็น admin หรือ user */
   const [sector, setSector] = useState("")
+
+  /* สร้าง state variable ชื่อ employees เพื่อเก็บข้อมูลที่ดึงจาก api */
   const [employees, setEmployees] = useState([])
 
   /* ดึงข้อมูล จาก api และนำมาเก็บใน state variable ที่ชื่อ employees*/

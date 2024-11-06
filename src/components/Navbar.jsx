@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 function Navbar() {
   return (
     <>
+      {/* สร้าง Link เพื่อ navigate ไปยัง path Home และ Owner Component */}
       <nav className="text-xl font-bold border-b-2 border-slate-900 mx-4">
         <ul className="flex justify-end pr-8">
           <li className="hover:text-white hover:bg-slate-900 p-4"><Link to='/'>Home</Link></li>

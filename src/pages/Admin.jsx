@@ -17,7 +17,7 @@ function Admin() {
     getData()
   }, [reload])
 
-  /* สร้างข้อมูลขึ้นมาจาก props */
+  /* สร้างข้อมูลขึ้นมาจาก props createdData จาก FormInputData component */
   const createData = async (name, lastname, position) => {
     const requestData = {
       name,
@@ -46,7 +46,7 @@ function Admin() {
     }
   }
 
-
+  /* แสดงตารางให้ Admin */
   return (
     <div className="flex flex-col items-center">
       <FormInputData
@@ -69,6 +69,7 @@ function Admin() {
                 <td className="border-2">{employee.lastname}</td>
                 <td className="border-2">{employee.position}</td>
                 <td className="flex justify-center gap-2 border-2">
+                  {/* เมื่อกดปุ่ม จะเรียกใช้งานฟังก์ชั่น deleteData */}
                   <button
                     className="text-red-500"
                     onClick={() => deleteData(employee.id)}

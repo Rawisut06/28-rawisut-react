@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+/* สร้าง component กรอกข้อมูลใหม่ เข้าไปยัง createdData ที่เป็น props เพื่อส่งต่อไปยัง Admin component */
 function FormInputData({createData}) {
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");

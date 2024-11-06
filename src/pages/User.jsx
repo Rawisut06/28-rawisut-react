@@ -1,5 +1,6 @@
-function User({employees}) {
+function User({employees}) { //นำ data จาก employees มาใช้งานใน User component
 
+  /* แสดงตารางให้ User */
   return (
     <div className="flex flex-col items-center">
       <table className="w-[1000px] max-md:w-full text-center">
