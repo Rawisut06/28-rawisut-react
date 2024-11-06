@@ -1,19 +1,9 @@
-import axios from "axios"
-import { useEffect, useState } from "react"
+import { useState } from "react";
 import Admin from "./Admin";
 import User from "./User"
 
 function Home() {
   const [sector, setSector] = useState("")
-  const [employees, setEmployees] = useState([])
-
-  useEffect(() => {
-    const getData = async () => {
-      const response = await axios.get("https://jsd5-mock-backend.onrender.com/members");
-      setEmployees(response.data);
-    }
-    getData()
-  })
 
   const sectorComponent = () => {
     if (sector === "Admin") return <Admin />;
